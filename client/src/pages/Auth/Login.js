@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import "../../styles/AuthStyles.css";
 import Layout from "../../components/Layout/Layout.js";
 import toast from "react-hot-toast";
-import { useAsyncValue, useNavigate } from "react-router-dom";
+import {  useNavigate, useLocation} from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../../context/auth.js";
 function Login() {
@@ -10,6 +10,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
+  const location=useLocation();
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -27,7 +28,7 @@ function Login() {
         });
         //save data in localstorage
         localStorage.setItem("auth", JSON.stringify(res_API.data));
-        navigate("/");
+        navigate(location.state||"/");
       } else {
         toast.error(res_API.data.message);
         console.log("something wrong in Login");
