@@ -4,7 +4,7 @@ import { IoCall } from "react-icons/io5";
 import { FaMailBulk } from "react-icons/fa";
 function Contact() {
   return (
-    <Layout>
+    <Layout title={"Contact Us- ECommerce App"}>
         <div className='contact-container'>
             <div className='contact-row1'>
                 <img src='/images/contact.jpg' width={1100} height={300}></img>

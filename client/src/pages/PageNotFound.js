@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { PiSmileySadLight } from "react-icons/pi";
 function PageNotFound() {
   return (
-   <Layout>
+   <Layout title={"PageNotFound"}>
         <div className='pnf'>
            <h1 className='pnf-title'>404</h1>
            <PiSmileySadLight />

@@ -3,7 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+body{
+  background-image:linear-gradient(rgb(250, 250, 146),rgb(97, 186, 209));
+}
 /* nav Bar css */
 .navbar{
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -77,3 +79,4 @@
   width: 100vw;
   /* object-fit: fill; */
 }
+

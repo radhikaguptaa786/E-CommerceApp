@@ -3,7 +3,7 @@ import Layout from '../components/Layout/Layout'
 
 function About() {
   return (
-    <Layout>
+    <Layout title={'About US'}>
          <div className='contact-container'>
             <div className='contact-row1'>
                 <img src='/images/contact.jpg' height={300}></img>
