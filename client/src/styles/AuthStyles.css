@@ -5,6 +5,7 @@
     align-items: center;
     justify-content: center;
     min-height: 70vh;
+    
     flex-direction: column;
     margin-inline: auto;
    padding: 5px 0;
@@ -12,6 +13,8 @@
     background-color:linear-gradient(0deg,teal 30%,pink 70%);
   }
   .form-container form{
+    width: 60vw;
+    border-radius: 20px;
     box-shadow: black 0px 5px 15px;
     padding: 20px;
     background-color: rgba(238, 244, 243, 0.774);

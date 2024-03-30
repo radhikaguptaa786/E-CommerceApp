@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import "../../styles/AuthStyles.css";
 import Layout from "../../components/Layout/Layout.js";
 import toast from "react-hot-toast";
-import {  useNavigate, useLocation} from "react-router-dom";
+import {  useNavigate, useLocation, Link} from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../../context/auth.js";
 function Login() {
@@ -80,9 +80,17 @@ function Login() {
         <input type="checkbox" className="form-check-input" id="exampleCheck1" />
         <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
     </div> */}
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary align-item-center">
             Login
           </button>
+          <div className="mb-3 text-center">
+          <Link to='/forgot-password'>Forgot Password</Link>
+          </div>
+          <div className="mb-3 text-center">
+            <p>Do not have an account? 
+          <Link to='/register'>SignUp</Link>
+          </p>
+          </div>
         </form>
       </div>
     </Layout>

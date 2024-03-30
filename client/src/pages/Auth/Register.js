@@ -2,7 +2,7 @@ import {React,useState} from 'react'
 
 import Layout from '../../components/Layout/Layout.js'
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate ,Link} from 'react-router-dom';
 import axios from 'axios';
 function Register() {
     const [name,setName]=useState("");
@@ -10,14 +10,14 @@ function Register() {
     const [password,setPassword]=useState("");
     const [phone,setPhone]=useState("");
     const [address,setAddress]=useState("");
-
+    const [answer,setAnswer]=useState("");
     const navigate=useNavigate();
     // handleSubmit
     const handleSubmit= async (event)=>{
         event.preventDefault();
        try{
             const res_API=await axios.post("/api/v1/auth/register",
-            {name,email,password,phone,address}
+            {name,email,password,phone,address,answer}
             );
             if(res_API&&res_API.data.success){
                 toast.success(res_API.data.message);
@@ -87,12 +87,24 @@ function Register() {
             }
             className="form-control" id="Address" placeholder='District,State,Country' required/>
         </div>
+        <div className="mb-3">
+            <input type="text" value={answer} 
+             onChange={(event)=>
+                setAnswer(event.target.value)
+            }
+            className="form-control" id="answer" placeholder='your nickname' required/>
+        </div>
     {/*     
     <div className="mb-3 form-check">
         <input type="checkbox" className="form-check-input" id="exampleCheck1" />
         <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
     </div> */}
-    <button type="submit" className="btn btn-primary">Submit</button>
+    <button type="submit" className="btn btn-primary">Register</button>
+    <div className="mb-3 text-center">
+            <p>Already have an account ?
+          <Link to='/login'>SignIn</Link>
+          </p>
+          </div>
     </form>
 
       </div>
