@@ -11,6 +11,7 @@ function Login() {
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
   const location=useLocation();
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -40,7 +41,7 @@ function Login() {
   };
   return (
     <Layout title={"Login- ECommerce"}>
-      <div className="form-container">
+      <div className="form-container mt-3">
         <form onSubmit={handleSubmit}>
           <h1 className="title">Login Form</h1>
 
@@ -75,11 +76,6 @@ function Login() {
             />
           </div>
 
-          {/*     
-    <div className="mb-3 form-check">
-        <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-        <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
-    </div> */}
           <button type="submit" className="btn btn-primary align-item-center">
             Login
           </button>

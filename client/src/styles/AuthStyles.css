@@ -4,17 +4,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 70vh;
+    min-height: 55vh;
     
     flex-direction: column;
-    margin-inline: auto;
-   padding: 5px 0;
+    
+   /* padding: 5px 0; */
     
     background-color:linear-gradient(0deg,teal 30%,pink 70%);
   }
   .form-container form{
-    width: 60vw;
-    border-radius: 20px;
+    width: 32vw;
+    border-radius: 0  0 10px 10px;
     box-shadow: black 0px 5px 15px;
     padding: 20px;
     background-color: rgba(238, 244, 243, 0.774);
@@ -36,4 +36,9 @@
     background-color: teal;
     border: none;
    
+  }
+
+  /*Login modal  */
+  .Login .modal-content{
+    background: linear-gradient(rgb(250, 250, 146),rgb(97, 186, 209));;
   }

@@ -17,6 +17,7 @@ router.post('/forgot-password',forgotPasswordController)
 
 // test routes
 router.get('/test',requireSignIn,isAdmin,testController)
+// category
 
 // protected user route auth
 router.get('/user-auth',requireSignIn,(req,res)=>{

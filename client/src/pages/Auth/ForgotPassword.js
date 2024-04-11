@@ -2,7 +2,7 @@ import {React,useState} from 'react'
 
 import Layout from '../../components/Layout/Layout.js'
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 const ForgotPassword=() =>{
     const [email,setEmail]=useState("");
@@ -74,9 +74,18 @@ const ForgotPassword=() =>{
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary align-item-center">
-            Reset
-          </button>
+          <ul className='nav-link text-center ' style={{listStyle:'none'}}>
+            <li>
+                <button type="submit" className="btn btn-primary align-item-center m-3">
+                Reset
+              </button>
+              <Link to='/login'>
+              <button type="btn" className="btn btn-primary align-item-center" >
+                Go Back
+              </button>
+              </Link>
+              </li>
+          </ul>
           
         </form>
       </div>

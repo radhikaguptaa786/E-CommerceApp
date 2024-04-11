@@ -18,6 +18,8 @@ import CreateProduct from './pages/Admin/CreateProduct';
 import Users from './pages/Admin/Users';
 import Orders from './pages/user/Orders';
 import Profile from './pages/user/Profile';
+import ModelTest from './pages/user/ModelTest';
+
 // import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
@@ -28,8 +30,8 @@ function App() {
         <Route path='user' element={<Dashboard />}/>
           <Route path='user/profile' element={<Profile />}/>
           <Route path='user/orders' element={<Orders />}/>
-          
         </Route>
+        <Route path='user/modeltest' element={<ModelTest/>}/>
         <Route path='/cart' element={<PrivateRoute/>}>
           <Route path='' element={<Cart />}/>
         </Route>
