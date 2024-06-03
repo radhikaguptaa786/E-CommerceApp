@@ -1,8 +1,11 @@
 import slugify from "slugify";
 import ProductModel from "../models/ProductModel.js";
+import categoryModel from "../models/categoryModel.js";
 import toast from "react-hot-toast";
 
 import fs from "fs";
+import { log } from "console";
+import userModel from "../models/userModel.js";
 export const createProductController = async (req, res) => {
   try {
     console.log("||||");
@@ -72,6 +75,30 @@ export const getProductController = async (req, res) => {
     });
   }
 };
+//get all users
+// get all products
+export const getUserController = async (req, res) => {
+  try {
+    const users = await userModel.find({})
+      .populate("name")
+      .select("-password")
+      // .limit(12)
+      .sort({ createdAt: -1 });
+    res.status(200).send({
+      success: true,
+      counTotal: users.length,
+      message: "All Users",
+      users,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error in getting Users",
+      error: error.message,
+    });
+  }
+};
 
 // get single product
 export const getsingleProductController = async (req, res) => {
@@ -109,7 +136,7 @@ export const productPhotoController = async (req, res) => {
     res.status(500).send({
       success: false,
       message: "Error in getting photo Products",
-      error: error.message,
+      error
     });
   }
 };
@@ -136,9 +163,10 @@ export const deleteProductController = async (req, res) => {
 // update product controller
 export const updateProductController=async (req,res)=>{
     try{
-      console.log("||||");
-      const { name, slug, description, price, category, quantity, shipping } =
+      const { name, description, price, category, quantity } =
         req.fields;
+        
+      console.log("||||");
       const { photo } = req.files;
   
       // Validation
@@ -154,6 +182,7 @@ export const updateProductController=async (req,res)=>{
         case !quantity:
           res.status(500).send({ error: "Quantity is Required" });
         case photo && photo.size > 1000000:
+          console.log("cannot upload photo");
           return res.status(500).send({
             error: "Photo is required and shuld be less than 1mb",
           });
@@ -180,4 +209,134 @@ export const updateProductController=async (req,res)=>{
         error: error.message,
       });
     }
+}
+
+// filter controller
+export const productFiltersController=async(req,res)=>{
+    try{
+        const {checked,radio}=req.body
+        let args={}
+        if(checked.length>0) args.category=checked
+        if(radio.length) 
+        {args.price={$gte:radio[0],$lte:radio[1]}}
+        const products=await ProductModel.find(args)
+        res.status(200).send({
+          success:true,
+          products
+        })
+    }catch(error){
+      console.log(error);
+      res.status(400).send({
+        success:false,
+        message:"Error while filtering product",
+        error
+      })
+    }
+}
+
+// productCountController
+export const productCountController=async(req,res)=>{
+  try{
+      const total=await ProductModel.find({}).estimatedDocumentCount()
+      res.status(200).send({
+        success:true,
+        total,
+      })
+  }catch(error){
+    console.log(error);
+    res.status(400).send({
+      success:false,
+      message:"Error in product count",
+      error
+    })
+  }
+}
+
+// product List base on page Controller
+export const productListController=async(req,res)=>{
+    try{
+        const perpage=4;
+        // to access dynamically
+        const page=req.params.page?req.params.page:1
+        const products=await ProductModel
+        .find({})
+        .select("-photo").skip((page-1)*perpage)
+        .limit(perpage).sort({createdAt:-1})
+        res.status(200).send({
+          success:true,
+          products,
+        })
+
+    }catch(error){
+      console.log(error);
+      res.status(400).send({
+        success:false,
+        message:"Error in product list",
+        error
+      })
+    }
+}
+
+// searchProductController
+export const searchProductController=async(req,res)=>{
+  try{
+      const {keyword}=req.params
+      const result =await ProductModel.find({
+        $or:[
+          {name:{$regex:keyword,$options:"i"}} ,  //options for case insensitive , regex to match string
+          {author:{$regex:keyword,$options:"i"}},
+          {binding:{$regex:keyword,$options:"i"}},
+        ]
+      }).select("-photo")
+      res.json(result)
+  }catch(error){
+    console.log(error);
+    res.status(500).send({
+      success:false,
+      message:'Error while searching',error,
+    })
+
+  }
+}
+
+// relatedProductController
+export const relatedProductController=async (req,res)=>{
+  try{
+    const {pid,cid}=req.params
+    const products=await ProductModel.find({
+      category:cid,
+      _id:{$ne:pid}
+    }).select("-photo").limit(3).populate("category")
+    res.status(200).send({
+      success:true,
+      products,
+    })
+  }catch(error){
+    console.log(error);
+    res.status(500).send({
+      success:false,
+      message:'Error while loading related products',
+      error
+    })
+  }
+}
+
+// get product by category
+export const productCategoryController=async (req,res)=>{
+  try{
+    const category=await categoryModel.findOne({slug:req.params.slug})
+    const products=await ProductModel.find({category}).populate('category')
+    res.status(200).send({
+      success:true,
+      category,
+      products
+    })
+  }catch(error){
+    console.log(error)
+    res.status(400).send({
+      success:false,
+      error,
+      message:'Error while getting product by category'
+    })
+  }
 }

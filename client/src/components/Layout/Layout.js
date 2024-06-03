@@ -17,7 +17,7 @@ function Layout(props) {
                
          </Helmet>
         <Header />
-        <main style={{minHeight:'78vh'}}>
+        <main style={{minHeight:'78vh'}} className=''>
           <Toaster />
         {props.children}
         </main>

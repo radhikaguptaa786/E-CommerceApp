@@ -11,7 +11,7 @@ function Dashboard() {
                 <div className='col-md-3'><UserMenu /></div>
                 <div className='col-md-9'>
                   <div className='card w-90 p-3 m-4 '>
-                      <h3>{auth?.user?.name}</h3>
+                      <h3>Hello {auth?.user?.name}</h3>
                   </div>
                  
                 </div>

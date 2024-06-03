@@ -1,6 +1,7 @@
 import slugify from "slugify";
 import categoryModel from "../models/categoryModel.js";
 import toast from 'react-hot-toast'
+import ProductModel from "../models/ProductModel.js";
 export const createCategoryControllers=async (req,res)=>{
     try{
         const {name}=req.body

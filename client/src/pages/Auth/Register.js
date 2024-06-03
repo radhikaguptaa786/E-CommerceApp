@@ -135,9 +135,10 @@ function Register() {
             <div className="mb-3 text-center">
               <p>
                 Already have an account ?
-                <Link data-bs-toggle="modal" data-bs-target="#LoginModal">
+                {/* <Link data-bs-toggle="modal" data-bs-target="#LoginModal">
                   SignIn
-                </Link>
+                </Link> */}
+                <Link to='/login'>SignIn</Link>
               </p>
             </div>
           </form>

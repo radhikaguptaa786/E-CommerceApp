@@ -31,9 +31,24 @@ const productSchema=new Schema({
         data:Buffer,
        contentType: String
    },
+   author:{
+      type:String,
+      // required:true
+   },
+   binding:{
+      type:String,
+      // required:true
+   },
    shipping:{
     type:Boolean
-   }
+   },
+   returnable:{
+      type:Boolean,
+      
+     },
+     pagenumbers:{
+      type:Number,
+     }
 },{timestamps:true})
 
 export default mongoose.model('product',productSchema)

@@ -29,7 +29,8 @@ function Login() {
         });
         //save data in localstorage
         localStorage.setItem("auth", JSON.stringify(res_API.data));
-        navigate(location.state||"/");
+        // sessionStorage.setItem("auth", JSON.stringify(res_API.data));
+        navigate(location.state||"/home");
       } else {
         toast.error(res_API.data.message);
         console.log("something wrong in Login");
