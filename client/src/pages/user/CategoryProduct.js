@@ -35,7 +35,7 @@ const CategoryProduct = () => {
                 <img
                   src={`/api/v1/product/product-photo/${p._id}`}
                   className="card-img-top"
-                  alt={p.name}
+                  alt={p.name} height={'150'}
                 />
                 <div className="card-body">
                   <h5 className="card-title">{p.name}</h5>

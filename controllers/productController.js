@@ -255,7 +255,7 @@ export const productCountController=async(req,res)=>{
 // product List base on page Controller
 export const productListController=async(req,res)=>{
     try{
-        const perpage=4;
+        const perpage=8;
         // to access dynamically
         const page=req.params.page?req.params.page:1
         const products=await ProductModel

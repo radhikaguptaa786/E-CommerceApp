@@ -7,6 +7,7 @@ import {useNavigate } from "react-router-dom";
 import { Checkbox, Radio } from "antd";
 import { Price } from "../components/Price";
 import { useCart } from "../context/cart";
+import nextread from './images/NextRead.jpg'
 
 const HomePage = () => {
   const navigate=useNavigate()
@@ -151,13 +152,13 @@ useEffect(()=>{
                 <img
                   src={`/api/v1/product/product-photo/${p._id}`}
                   className="card-img-top"
-                  alt={p.name}
+                  alt={p.name} height={"150"}
                 />
                 <div className="card-body">
                   <h5 className="card-title">{p.name}</h5>
-                  <p className="card-text">
+                  {/* <p className="card-text">
                     {p.description.substring(0, 30)}...
-                  </p>
+                  </p> */}
                   <p className="card-text">$ {p.price}</p>
                   <button
                     className="btn btn-secondary btn-sm ms-1"
@@ -166,7 +167,7 @@ useEffect(()=>{
                     More Details
                   </button>
                   <button
-                    className="btn btn-info btn-sm ms-1"
+                    className="btn btn-warning btn-sm ms-1"
                     onClick={()=>{setCart([...cart,p]);
                       localStorage.setItem('cart',JSON.stringify([...cart,p]))
                       toast.success("Item added to cart")}}

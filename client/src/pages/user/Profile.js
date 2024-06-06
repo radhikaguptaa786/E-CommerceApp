@@ -136,14 +136,7 @@ const Profile = () => {
             <button type="submit" className="btn btn-primary">
               Update
             </button>
-            <div className="mb-3 text-center">
-              <p>
-                Already have an account ?
-                <Link data-bs-toggle="modal" data-bs-target="#LoginModal">
-                  SignIn
-                </Link>
-              </p>
-            </div>
+            
           </form>
         </div>
       </div>

@@ -41,8 +41,8 @@ const ProductDetails = () => {
   };
   return (
     <Layout>
-      <div className="card">
-      <div className="row container mt-2">
+      <div className="card m-5">
+      <div className="row container mt-2 ">
         <div className="col-3 ">
           <img
             src={`/api/v1/product/product-photo/${product._id}`}
@@ -145,7 +145,7 @@ const ProductDetails = () => {
               />
               <div className="card-body">
                 <h6 className="card-title">{p.name}</h6>
-                <p className="card-text">{p.description.substring(0, 30)}...</p>
+                {/* <p className="card-text">{p.description.substring(0, 30)}...</p> */}
                 <p className="card-text"> $ {p.price}</p>
                 <button
                   className="btn btn-primary ms-1"

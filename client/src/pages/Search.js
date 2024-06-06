@@ -22,13 +22,13 @@ const Search = () => {
                 <img
                   src={`/api/v1/product/product-photo/${p._id}`}
                   className="card-img-top"
-                  alt={p.name}
+                  alt={p.name} height={'150'}
                 />
                 <div className="card-body">
                   <h5 className="card-title">{p.name}</h5>
-                  <p className="card-text">
+                  {/* <p className="card-text">
                     {p.description.substring(0, 30)}...
-                  </p>
+                  </p> */}
                   <p className="card-text">$ {p.price}</p>
                   <button
                     className="btn btn-secondary btn-sm ms-1"

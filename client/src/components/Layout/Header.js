@@ -66,8 +66,9 @@ function Header() {
     <>
       <nav className="navbar navbar-expand-lg ">
         <div className="container-fluid">
+          
           <img src={bookLogo}></img>
-          <Link to="/" className="navbar-brand" style={{color:'white'}}>
+          <Link to="/" className="navbar-brand" style={{color:'blue'}}>
             BookBazaar
           </Link>
           <button
