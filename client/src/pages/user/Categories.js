@@ -10,8 +10,8 @@ const Categories = () => {
             <div className='row m-3 '>
                 <div >
                     {categories.map(c=>(
-                        <div className='col-md-6 mt-2 mb-2 gx-3 gy-3 ' key={c._id}>
-                        <Link to={"/"} className='btn btn-secondary'>{c.name}</Link>
+                        <div className='card mt-2 mb-2 gx-3 gy-3 ' key={c._id} >
+                        <Link to={"/"} className='btn btn-secondary ' >{c.name}</Link>
                         </div>
                     ))}
                 </div>

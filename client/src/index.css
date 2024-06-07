@@ -8,7 +8,7 @@
 body{
   background-image:linear-gradient(rgb(245, 249, 250),rgb(159, 196, 252));
   /* background-color: rgb(7, 7, 66); */
-
+  
 }
 h6{
   /* color: rgb(127, 169, 206); */
@@ -137,8 +137,15 @@ form{
   background-color: rgba(205, 6, 6, 0.842);
 }
 
-/*  */
 .products-link{
   text-decoration: none;
   color: black;
 }
+
+.banner-img {
+  margin: 5px 0 10px;
+  height: 150px;
+}
+/* img{
+  object-fit: contain;
+} */

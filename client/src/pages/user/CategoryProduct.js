@@ -5,6 +5,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useCart } from '../../context/cart'
 import toast from 'react-hot-toast'
+import "../../styles/Card.css"
 const CategoryProduct = () => {
     const [products,setProducts]=useState([])
     const [category,setCategory]=useState([])
@@ -37,12 +38,14 @@ const CategoryProduct = () => {
                   className="card-img-top"
                   alt={p.name} height={'150'}
                 />
-                <div className="card-body">
+                <div className="card-body" >
+                  <div className='card-middle'>
                   <h5 className="card-title">{p.name}</h5>
-                  <p className="card-text">
+                  <p className="card-text " height="150">
                     {p.description.substring(0, 30)}...
                   </p>
-                  <p className="card-text">$ {p.price}</p>
+                  <p className="card-text card-price">Price: $ {p.price}</p>
+                  </div>
                   <button
                     className="btn btn-secondary btn-sm ms-1"
                     onClick={()=>navigate(`/product/${p.slug}`)}

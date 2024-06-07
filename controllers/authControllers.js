@@ -1,4 +1,5 @@
 import { comparePassword, hashPassword } from "../helpers/authHelper.js";
+import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
 import JWT from "jsonwebtoken";
 export const registerController = async (req, res) => {
@@ -186,6 +187,53 @@ export const updateProfileController=async(req,res)=>{
   }
 }
 
+//orders
+export const getOrdersController=async(req,res)=>{
+  try{
+    const orders=await orderModel.find({buyer:req.user._id}).populate('products',"-photo").populate("buyer","name")
+    res.json(orders);
+  }catch(error){
+    console.log(error);
+    res.status(500).send({
+      success:false,
+      message:'Error while getting orders',
+      error
+    })
+  }
+};
+//get All Orders
+export const getAllOrdersController=async(req,res)=>{
+  try{
+    const orders=await orderModel.find({})
+    .populate('products',"-photo")
+    .populate("buyer","name")
+    // .sort({createdAt:"-1"})
+    res.json(orders);
+  }catch(error){
+    console.log(error);
+    res.status(500).send({
+      success:false,
+      message:'Error while getting orders',
+      error
+    })
+  }
+}
+//orderStatusController
+export const orderStatusController=async(req,res)=>{
+  try{
+    const {orderId}=req.params
+    const {status}=req.body
+    const order=await orderModel.findByIdAndUpdate(orderId,{status},{new:true})
+    res.json(order)
+  }catch(error){
+    console.log(error)
+    res.status(500).send({
+      success:false,
+      message:'Error while updating orders',
+      error
+    })
+  }
+}
 // test controller
 export const testController = (req, res) => {
   res.send("protected Route");

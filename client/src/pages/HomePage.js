@@ -8,6 +8,7 @@ import { Checkbox, Radio } from "antd";
 import { Price } from "../components/Price";
 import { useCart } from "../context/cart";
 import nextread from './images/NextRead.jpg'
+import "../styles/Card.css"
 
 const HomePage = () => {
   const navigate=useNavigate()
@@ -116,6 +117,14 @@ useEffect(()=>{
   
   return (
     <Layout title={"All Products- Best Offers"}>
+       {/* banner image */}
+       <img
+        src="/images/NextRead.jpg"
+        className="banner-img"
+        alt="bannerimage"
+        width={"100%"}
+      />
+      {/* banner image */}
       <div className="row ">
         <div className="col-md-2 ms-1 filter-col d-flex flex-column ">
           <h6 className="text-center">Filter By Category</h6>
@@ -144,7 +153,7 @@ useEffect(()=>{
         </div>
         {/* {JSON.stringify(radio, null, 4)} */}
         <div className="col-md-9">
-          <h1 className="text-center mt-2">Books Available</h1>
+          {/* <h1 className="text-center mt-2">Books Available</h1> */}
           <div className="d-flex flex-wrap">
             
             {products&& products.length>0 ?(products.map((p) => (
@@ -159,7 +168,7 @@ useEffect(()=>{
                   {/* <p className="card-text">
                     {p.description.substring(0, 30)}...
                   </p> */}
-                  <p className="card-text">$ {p.price}</p>
+                  <p className="card-text card-price">Price: $ {p.price}</p>
                   <button
                     className="btn btn-secondary btn-sm ms-1"
                     onClick={()=>navigate(`/product/${p.slug}`)}

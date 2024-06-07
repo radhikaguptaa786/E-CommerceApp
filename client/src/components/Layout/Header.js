@@ -94,7 +94,7 @@ function Header() {
                   Categories
                 </Link>
                 <ul className="dropdown-menu">
-                <Link className="dropdown-item" to={"/home"}>All Categories</Link>
+                <Link className="dropdown-item" to={"/categories"}>All Categories</Link>
                 {categories?.map((c)=>(
                   
                   <li>

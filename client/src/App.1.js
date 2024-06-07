@@ -6,7 +6,6 @@ import Policy from "./pages/Policy";
 import PageNotFound from "./pages/PageNotFound";
 import Register from "./pages/Auth/Register";
 import Login from "./pages/Auth/Login";
-import { Toaster } from "react-hot-toast";
 import Dashboard from "./pages/user/Dashboard";
 import PrivateRoute from "./components/Routes/Private";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
@@ -28,9 +27,9 @@ import CategoryProduct from "./pages/user/CategoryProduct";
 import CartPage from "./pages/user/CartPage";
 import MainStartPage from "./pages/MainStartPage";
 import AdminOrders from "./pages/Admin/AdminOrders";
+
 // import 'react-toastify/dist/ReactToastify.css';
-function App() {
- 
+export function App() {
   return (
     <>
       <Routes>
@@ -70,5 +69,3 @@ function App() {
     </>
   );
 }
-
-export default App;
