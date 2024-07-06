@@ -10,25 +10,35 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 const CartPage = () => {
     const [auth, setAuth] = useAuth();
-    const [cart, setCart] = useCart();
+    // const [cart, setCart] = useCart();
     const [clientToken,setClientToken]=useState("");
     const[instance,setInstance]=useState("");
     const [loading,setLoading]=useState(false);
     const navigate = useNavigate();
-
+    const [cart,setCart]=useState([]);
     // Fetch cart function memoized with useCallback
     const fetchCart = useCallback(async () => {
-        if (auth?.token) {
+       
             try {
-                const { data } = await axios.get('/api/get-cart', {
-                    headers: { Authorization: `Bearer ${auth.token}` },
-                });
-                setCart(data.items);
+                const userdata = localStorage.getItem("auth");
+                if(userdata){
+                    const user=JSON.parse(userdata)
+                    const payload =user.user
+                      console.log("payload",payload)
+                    const { data } = await axios.get('/api/getCart', payload);
+                    
+                    setCart([...cart, data.items]);
+                    toast.success("check your cart");
+                  }
+                  else{
+                    navigate('/login')
+                  }
+                
             } catch (error) {
                 console.error('Error fetching cart:', error);
             }
-        }
-    }, [auth?.token, setCart]);
+        
+    }, [ setCart]);
 
     useEffect(() => {
         fetchCart();
@@ -55,7 +65,7 @@ const CartPage = () => {
             let index = myCart.findIndex(item => item._id === pid);
             myCart.splice(index, 1);
             setCart(myCart);
-            localStorage.setItem('cart', JSON.stringify(myCart));
+            // localStorage.setItem('cart', JSON.stringify(myCart));
         } catch (error) {
             console.log(error);
         }
@@ -109,7 +119,7 @@ useEffect(()=>{
                 </div>
                 <div className='row'>
                     <div className='col-md-8'>
-                        {cart?.map((p) => (
+                        {cart?.products?.map((p) => (
                              
                             <div className='row card flex-row mb-2 p-3 ' key={p._id}>
                                 <div className='col-md-4'>

@@ -5,6 +5,7 @@ import {useNavigate } from "react-router-dom";
 import books from './images/Books.jpg'
 import books3 from './images/Books3.jpg'
 import nextread from './images/NextRead.jpg'
+import booksMain from "./images/BooksMain.jpg"
 const MainStartPage = () => {
   const navigate=useNavigate()
   
@@ -12,34 +13,30 @@ const MainStartPage = () => {
 
   return (
     <Layout title={"Home"}>
-        <div className='card' >
-           {/* <h1 className='pnf-title'>404</h1>
-           <PiSmileySadLight /> */}
-            <img src={nextread} alt='nextRead!' className='card-img' style={{height:'10vh'}}></img>
-           {/* <img src={books} alt='BOOKS!' className='card-img' style={{height:'79vh'}}></img> */}
-           <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
-  <div className="carousel-inner">
-    <div className="carousel-item active" data-bs-interval={4000}>
-    <img src={books} alt='BOOKS!' className='card-img' style={{height:'75vh'}}></img>
-    </div>
-    <div className="carousel-item" data-bs-interval={3000}>
-    <img src={books3} alt='BOOKS!' className='card-img' style={{height:'75vh'}}></img>
-    </div>
-    
-  </div>
-  <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-    <span className="carousel-control-prev-icon" aria-hidden="true" />
-    <span className="visually-hidden">Previous</span>
-  </button>
-  <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-    <span className="carousel-control-next-icon" aria-hidden="true" />
-    <span className="visually-hidden">Next</span>
-  </button>
-</div>
-           {/* <h2 className='pnf-heading'>OOPs! Page Not Found</h2> */}
-           <Link to="/home" className=' card-img-overlay '></Link>
-           <Link to="/home" className=' pnf-btn card-img '>Explore</Link>
+      <div>
+      {/* <img src={nextread} alt='nextRead!' className='card-img placeholder-glow' style={{height:'10vh'}}></img> */}
+            <div className="card mt-3"  style={{border:'none'}} >
+        <div className="row g-0">
+          <div className="col-md-6">
+            <div className="card m-5" style={{ border:'none'}}>
+              <div className="card-body">
+                <h1 className="card-title" style={{fontWeight:'bolder'}}>Welcome to BookBazaar </h1>
+                <p className="card-text">where every book has a story to tell! Our shelves are stocked with a carefully curated selection of books from all genres, ensuring that every reader finds their perfect match. Whether you’re a lifelong bibliophile or just beginning your reading journey, our knowledgeable staff is here to help you discover new favorites. Visit us in-store or explore our collection online. Happy reading!
+                </p>
+                <Link to={'/home'} className="btn btn-primary  " style={{width:'10rem'}}>Explore</Link>
+              </div>
+            </div>
+
+          </div>
+          <div className="col-md-4">
+            <div className="card-body">
+            <img src={booksMain}  alt="book image"  style={{margin:'auto',width:'25rem'}} />
+            </div>
+          </div>
         </div>
+      </div>
+      </div>
+
    </Layout>
   );
 };

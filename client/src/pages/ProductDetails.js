@@ -5,12 +5,17 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/cart";
 import toast from "react-hot-toast";
+import { useAuth } from "../context/auth";
 const ProductDetails = () => {
   const params = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [cart,setCart]=useCart();
+  
+  const { auth } = useAuth();
+  const userdata = localStorage.getItem("auth");
+  console.log(auth)
   // initial product details
   useEffect(() => {
     if (params?.slug) getProduct();
@@ -37,6 +42,28 @@ const ProductDetails = () => {
       setRelatedProducts(data?.products);
     } catch (error) {
       console.log(error, "similar Product error");
+    }
+  };
+  const AddtoCart = async (product) => {
+    try {
+      const userdata = localStorage.getItem("auth");
+      if(userdata){
+      console.log(JSON.parse(userdata));
+      const User=JSON.parse(userdata)
+      const payload = {
+        product: product,
+        user: User
+      };
+      const { data } = await axios.post("/api/addto-cart", payload);
+      setCart([...cart, data]);
+      toast.success("Item added to cart");
+    }
+    else{
+      navigate('/login')
+    }
+    } catch (error) {
+      console.log(error);
+      toast.error("Book Cannot be added to Cart");
     }
   };
   return (
@@ -81,7 +108,7 @@ const ProductDetails = () => {
              <div className="col-2"><h6>Returnable:</h6></div>
              <div className="col-6"><h6>{product.returnable?product.returnable:" "}</h6></div>
           </div>
-          <h5>Price:${product.price}</h5>
+          <h5 className="card-price">Price:${product.price}</h5>
           <div className="accordion accordion-flush" id="accordionExample">
             <div className="accordion-item">
               <h2 className="accordion-header">
@@ -103,14 +130,17 @@ const ProductDetails = () => {
           <div className="card p-3 mt-5">
           <button
                     className="btn btn-warning btn-sm m-2"
-                    onClick={()=>{setCart([...cart,product]);
-                      localStorage.setItem('cart',JSON.stringify([...cart,product]))
-                      toast.success("Item added to cart")}}
+                    onClick={()=>{
+                      if(userdata)
+                      {AddtoCart(product);}
+                    else{
+                      navigate('/login')
+                    }}}
                   >
                     Add to Cart
                   </button>
                   <button
-                    className="btn btn-delete btn-danger btn-sm m-2"
+                    className="btn green-btn btn-warning btn-sm m-2"
                   >
                     Buy Now
                   </button>
@@ -148,7 +178,7 @@ const ProductDetails = () => {
                 {/* <p className="card-text">{p.description.substring(0, 30)}...</p> */}
                 <p className="card-text"> $ {p.price}</p>
                 <button
-                  className="btn btn-primary ms-1"
+                  className="btn btn-warning ms-1"
                   onClick={() => navigate(`/product/${p.slug}`)}
                 >
                   More Details

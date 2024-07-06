@@ -41,7 +41,7 @@ function Register() {
     <Layout title={"Register- ECommerce"}>
       <div className="form-body">
         <div className="form-container">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="bg-info bg-opacity-10">
             <h1 className="title">Register Yourself</h1>
             <div className="mb-3">
               <label htmlFor="Name" className="form-label">

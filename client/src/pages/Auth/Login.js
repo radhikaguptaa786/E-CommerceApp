@@ -42,8 +42,8 @@ function Login() {
   };
   return (
     <Layout title={"Login- ECommerce"}>
-      <div className="form-container mt-3">
-        <form onSubmit={handleSubmit}>
+      <div className="form-container mt-3 ">
+        <form onSubmit={handleSubmit} className="bg-info bg-opacity-10">
           <h1 className="title">Login Form</h1>
 
           <div className="mb-3">

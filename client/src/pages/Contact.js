@@ -7,8 +7,8 @@ function Contact() {
     <Layout title={"Contact Us- ECommerce App"}>
         <div className='contact-container p-3'>
               <div className="container text-center">
-                <div className="row">
-                  <div className="col-8 border bg-info bg-opacity-10 rounded-end ">
+                <div className="row gap-5">
+                  <div className="col-6 border bg-info bg-opacity-10 rounded-end ">
                     <form className="row g-3">
                       <h4>Contact Us</h4><br/>
                       <div className='row'>
@@ -19,28 +19,12 @@ function Contact() {
                         <label htmlFor="inputPassword4" className="form-label">Password</label>
                         <input type="password" className="form-control" id="inputPassword4" />
                       </div>
+                      <div className="col-12">
+                      <label htmlFor="inputAddress" className="form-label">Message</label>
+                      <input type="textarea" className="form-control" id="inputAddress" placeholder="Drop Your Message here" />
+                    </div>
                     <div className="col-12">
-                      <label htmlFor="inputAddress" className="form-label">Address</label>
-                      <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
-                    </div>
-                    <div className="col-md-6">
-                      <label htmlFor="inputCity" className="form-label">City</label>
-                      <input type="text" className="form-control" id="inputCity" />
-                    </div>
-                    <div className="col-md-4">
-                      <label htmlFor="inputState" className="form-label">State</label>
-                      <select id="inputState" className="form-select">
-                        <option selected>Choose...</option>
-                        <option>...</option>
-                      </select>
-                    </div>
-                    <div className="col-md-2">
-                      <label htmlFor="inputZip" className="form-label">Zip</label>
-                      <input type="text" className="form-control" id="inputZip" />
-                    </div>
-                    
-                    <div className="col-12">
-                      <button type="submit" className="btn btn-primary">submit</button>
+                      <button type="submit" className="btn btn-primary green-btn mb-3">submit</button>
                     </div>
                   </form>
 
