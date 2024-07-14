@@ -1,0 +1,156 @@
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+  /* --main-bg:linear-gradient(rgb(250, 250, 146),rgb(97, 186, 209)); */
+}
+body{
+  /* background-image:linear-gradient(rgb(245, 249, 250),rgb(159, 196, 252)); */
+  /* background-color: rgb(7, 7, 66); */
+  
+}
+h6{
+  /* color: rgb(127, 169, 206); */
+  /* background-image:linear-gradient(rgb(245, 249, 250),rgb(159, 196, 252)); */
+}
+.filter{
+  /* color: rgb(253, 253, 253); */
+}
+.filter-col{
+  /* background-color: rgb(7, 7, 66);  */
+  /* height: 100vh; */
+}
+form{
+  
+  color: black;
+}
+.main-page{
+  margin-top: 15px;
+}
+/* nav Bar css */
+.navbar{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 17px;
+  line-height: 26px;
+  /* text-transform: uppercase; */
+  box-shadow: 0 8px 6px -6px grey;
+  border-bottom: 0.7px solid grey;
+  z-index: 999;
+
+}
+.nav-link{
+  font-weight: 300 !important;
+  
+}
+
+.nav-link .active{
+  border-bottom: 2px solid black;
+}
+.nav-link:hover{
+  color: rgb(161, 13, 99);;
+}
+.navbar-brand{
+  font-weight: 700;
+  font-family: 'roboto,sans-serif';
+  letter-spacing: 2;
+}
+
+/* footer */
+.footer{
+  color:white;
+  padding: 15px;
+  background:black;
+}
+
+.footer a{
+  text-decoration: none;
+  color: aliceblue;
+  padding: 10px;
+}
+.footer a:hover{
+  color: rgb(110, 218, 218);
+  border-bottom: 1px solid teal;
+}
+/* row */
+.row{
+  margin-right: 0;
+}
+/* Page Not Found */
+.pnf{
+  display: flex;
+  
+  margin-inline: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.pnf-title{
+  font-weight: 700;
+  font-size: 50px;
+}
+.pnf-btn{
+  color: white;
+  padding: 10px;
+  
+  background-color: rgb(19, 210, 240);
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+}
+.pnf-btn:hover{
+  background-color: rgb(10, 197, 211);
+}
+/* contact */
+.contact-container{
+  display: grid;
+  grid-template-rows: auto auto;
+  row-gap: normal;
+}
+.contact-row1 img{
+  opacity: 0.8;
+  width: 100vw;
+  /* object-fit: fill; */
+}
+
+.navbar{
+  background-image:linear-gradient(rgb(245, 249, 250),rgb(159, 196, 252));
+}
+.nav-link{
+  /* color: aliceblue; */
+}
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+  /* color: aquamarine; */
+  border-bottom: 2px solid rgb(161, 13, 99);;
+}
+.navbar-nav .nav-link:hover{
+    color: rgb(161, 13, 99);;
+}
+.navbar img{
+  max-height: 7vh;
+}
+
+.btn{
+  background-color:rgb(161, 13, 99);
+  color: white;
+  border: none;
+}
+
+.btn-delete{
+  background-color: rgba(205, 6, 6, 0.842);
+}
+
+.products-link{
+  text-decoration: none;
+  color: black;
+}
+
+.banner-img {
+  margin: 5px 0 10px;
+  height: 10rem;
+}
+.green-btn{
+    background-color: rgb(32, 116, 104);
+    color: white;
+  }

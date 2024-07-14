@@ -4,9 +4,10 @@ const cartSchema = new mongoose.Schema({
   products: [
     {
       id: {
-        type: mongoose.ObjectId,
+        // type: mongoose.Schema.Types.ObjectId,
+        type:String,
         ref: "product",
-        required: true,
+        required:true
       },
       quantity: {
         type: Number,
@@ -19,10 +20,11 @@ const cartSchema = new mongoose.Schema({
   //   required: true,
   //   unique: true,
   // },
-  userEmail: {
-    type: String,
-    required: true,
-    unique: true,
+  userEmail:{
+    type:String,
+    ref:"users",
+    required:true,
+    unique:true,
   },
 });
 
